@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audiobook Page Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>📚 Audiobook Page Calculator</h1>
+        <p>Convert your audiobook listening time into equivalent page counts</p>
+    </header>
+
+    <main>
+        <div class="calculator-grid">
+            <section class="calculator-card">
+                <h2>Method A: Time & Speed</h2>
+                <form id="method-a-form">
+                    <div class="form-group">
+                        <label for="book-title-a">Book Title (Optional)</label>
+                        <input type="text" id="book-title-a" placeholder="Enter book title">
+                    </div>
+                    <div class="form-group">
+                        <label for="listening-time">Listening Time</label>
+                        <div class="time-input">
+                            <input type="number" id="hours" min="0" step="0.5" placeholder="Hours" required>
+                            <input type="number" id="minutes" min="0" step="1" placeholder="Minutes" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="speed-a">Listening Speed</label>
+                        <select id="speed-a" required>
+                            <option value="0.5">0.5x</option>
+                            <option value="0.75">0.75x</option>
+                            <option value="1" selected>1x</option>
+                            <option value="1.25">1.25x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="1.75">1.75x</option>
+                            <option value="2">2x</option>
+                            <option value="2.5">2.5x</option>
+                            <option value="3">3x</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date-a">Date</label>
+                        <input type="date" id="date-a" required>
+                    </div>
+                    <button type="submit">Calculate Pages</button>
+                </form>
+                <div class="result" id="result-a" style="display: none;">
+                    <h3>📖 Equivalent Pages: <span id="pages-a">0</span></h3>
+                    <button id="save-a" class="save-btn">Save Entry</button>
+                </div>
+            </section>
+
+            <section class="calculator-card">
+                <h2>Method B: Total Length & Progress</h2>
+                <form id="method-b-form">
+                    <div class="form-group">
+                        <label for="book-title-b">Book Title (Optional)</label>
+                        <input type="text" id="book-title-b" placeholder="Enter book title">
+                    </div>
+                    <div class="form-group">
+                        <label for="total-length">Total Audiobook Length</label>
+                        <div class="time-input">
+                            <input type="number" id="total-hours" min="0" step="0.5" placeholder="Hours" required>
+                            <input type="number" id="total-minutes" min="0" step="1" placeholder="Minutes" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="percentage">Percentage Completed</label>
+                        <input type="number" id="percentage" min="0" max="100" step="1" placeholder="50" required>
+                        <small>Enter percentage of book completed (0-100)</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="speed-b">Listening Speed</label>
+                        <select id="speed-b" required>
+                            <option value="0.5">0.5x</option>
+                            <option value="0.75">0.75x</option>
+                            <option value="1" selected>1x</option>
+                            <option value="1.25">1.25x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="1.75">1.75x</option>
+                            <option value="2">2x</option>
+                            <option value="2.5">2.5x</option>
+                            <option value="3">3x</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date-b">Date</label>
+                        <input type="date" id="date-b" required>
+                    </div>
+                    <button type="submit">Calculate Pages</button>
+                </form>
+                <div class="result" id="result-b" style="display: none;">
+                    <h3>📖 Equivalent Pages: <span id="pages-b">0</span></h3>
+                    <button id="save-b" class="save-btn">Save Entry</button>
+                </div>
+            </section>
+        </div>
+
+        <section class="history-section">
+            <h2>📚 Reading History</h2>
+            <div class="history-controls">
+                <button id="clear-history" class="danger-btn">Clear All History</button>
+                <div class="data-warning">
+                    ⚠️ Data is stored locally in your browser. Clearing browser history/cookies will delete all entries.
+                </div>
+            </div>
+            <div id="history-list">
+                <p class="no-entries">No saved entries yet</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>📖 1 hour of listening time = 50 pages at 1x speed</p>
+        <p>Adjusts automatically for different listening speeds</p>
+        <p>Created by <a href="https://www.instagram.com/bookclubforlonelygirls" target="_blank" rel="noopener noreferrer">Book Club for Lonely Girls</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
