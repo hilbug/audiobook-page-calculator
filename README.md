@@ -114,6 +114,7 @@ The calculator works with any static hosting service:
 - **Browser Support**: Modern browsers (Chrome, Firefox, Safari, Edge)
 - **Responsive**: Mobile-first responsive design
 - **Performance**: Lightweight and fast-loading
+- **Development Tool**: Created using [Windsurf IDE](https://windsurf.com/) for efficient development workflow
 
 ## 🎯 Use Cases
 
