@@ -13,13 +13,45 @@
     </header>
 
     <main>
+        <!-- Method A: Primary Option - Full Width -->
+        <section class="calculator-card primary-method">
+            <div class="method-badge">Recommended</div>
+            <h2>Method A: Book Pages & Progress</h2>
+            <form id="method-a-form">
+                <div class="form-group">
+                    <label for="book-title-a">Book Title (Optional)</label>
+                    <input type="text" id="book-title-a" placeholder="Enter book title">
+                </div>
+                <div class="form-group">
+                    <label for="total-pages">Total Book Pages</label>
+                    <input type="number" id="total-pages" min="1" step="1" placeholder="300" required>
+                    <small>Enter total pages from paperback or hardback edition</small>
+                </div>
+                <div class="form-group">
+                    <label for="percentage-a">Percentage Completed</label>
+                    <input type="number" id="percentage-a" min="0" max="100" step="1" placeholder="50" required>
+                    <small>Enter percentage of audiobook completed (0-100)</small>
+                </div>
+                <div class="form-group">
+                    <label for="date-a">Date</label>
+                    <input type="date" id="date-a" required>
+                </div>
+                <button type="submit">Calculate Pages</button>
+            </form>
+            <div class="result" id="result-a" style="display: none;">
+                <h3>📖 Equivalent Pages: <span id="pages-a">0</span></h3>
+                <button id="save-a" class="save-btn">Save Entry</button>
+            </div>
+        </section>
+
+        <!-- Methods B & C: Side by Side -->
         <div class="calculator-grid">
             <section class="calculator-card">
-                <h2>Method A: Time & Speed</h2>
-                <form id="method-a-form">
+                <h2>Method B: Time & Speed</h2>
+                <form id="method-b-form">
                     <div class="form-group">
-                        <label for="book-title-a">Book Title (Optional)</label>
-                        <input type="text" id="book-title-a" placeholder="Enter book title">
+                        <label for="book-title-b">Book Title (Optional)</label>
+                        <input type="text" id="book-title-b" placeholder="Enter book title">
                     </div>
                     <div class="form-group">
                         <label for="listening-time">Listening Time</label>
@@ -27,51 +59,6 @@
                             <input type="number" id="hours" min="0" step="0.5" placeholder="Hours" required>
                             <input type="number" id="minutes" min="0" step="1" placeholder="Minutes" required>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="speed-a">Listening Speed</label>
-                        <select id="speed-a" required>
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1x</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="1.75">1.75x</option>
-                            <option value="2">2x</option>
-                            <option value="2.5">2.5x</option>
-                            <option value="3">3x</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="date-a">Date</label>
-                        <input type="date" id="date-a" required>
-                    </div>
-                    <button type="submit">Calculate Pages</button>
-                </form>
-                <div class="result" id="result-a" style="display: none;">
-                    <h3>📖 Equivalent Pages: <span id="pages-a">0</span></h3>
-                    <button id="save-a" class="save-btn">Save Entry</button>
-                </div>
-            </section>
-
-            <section class="calculator-card">
-                <h2>Method B: Total Length & Progress</h2>
-                <form id="method-b-form">
-                    <div class="form-group">
-                        <label for="book-title-b">Book Title (Optional)</label>
-                        <input type="text" id="book-title-b" placeholder="Enter book title">
-                    </div>
-                    <div class="form-group">
-                        <label for="total-length">Total Audiobook Length</label>
-                        <div class="time-input">
-                            <input type="number" id="total-hours" min="0" step="0.5" placeholder="Hours" required>
-                            <input type="number" id="total-minutes" min="0" step="1" placeholder="Minutes" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="percentage">Percentage Completed</label>
-                        <input type="number" id="percentage" min="0" max="100" step="1" placeholder="50" required>
-                        <small>Enter percentage of book completed (0-100)</small>
                     </div>
                     <div class="form-group">
                         <label for="speed-b">Listening Speed</label>
@@ -96,6 +83,51 @@
                 <div class="result" id="result-b" style="display: none;">
                     <h3>📖 Equivalent Pages: <span id="pages-b">0</span></h3>
                     <button id="save-b" class="save-btn">Save Entry</button>
+                </div>
+            </section>
+
+            <section class="calculator-card">
+                <h2>Method C: Total Length & Progress</h2>
+                <form id="method-c-form">
+                    <div class="form-group">
+                        <label for="book-title-c">Book Title (Optional)</label>
+                        <input type="text" id="book-title-c" placeholder="Enter book title">
+                    </div>
+                    <div class="form-group">
+                        <label for="total-length">Total Audiobook Length</label>
+                        <div class="time-input">
+                            <input type="number" id="total-hours" min="0" step="0.5" placeholder="Hours" required>
+                            <input type="number" id="total-minutes" min="0" step="1" placeholder="Minutes" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="percentage-c">Percentage Completed</label>
+                        <input type="number" id="percentage-c" min="0" max="100" step="1" placeholder="50" required>
+                        <small>Enter percentage of book completed (0-100)</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="speed-c">Listening Speed</label>
+                        <select id="speed-c" required>
+                            <option value="0.5">0.5x</option>
+                            <option value="0.75">0.75x</option>
+                            <option value="1" selected>1x</option>
+                            <option value="1.25">1.25x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="1.75">1.75x</option>
+                            <option value="2">2x</option>
+                            <option value="2.5">2.5x</option>
+                            <option value="3">3x</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date-c">Date</label>
+                        <input type="date" id="date-c" required>
+                    </div>
+                    <button type="submit">Calculate Pages</button>
+                </form>
+                <div class="result" id="result-c" style="display: none;">
+                    <h3>📖 Equivalent Pages: <span id="pages-c">0</span></h3>
+                    <button id="save-c" class="save-btn">Save Entry</button>
                 </div>
             </section>
         </div>

@@ -42,6 +42,40 @@ main {
     margin-bottom: 2rem;
 }
 
+.primary-method {
+    position: relative;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 2px solid #667eea;
+    margin-bottom: 2rem;
+    transform: scale(1.02);
+}
+
+.primary-method:hover {
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 15px 50px rgba(102, 126, 234, 0.2);
+}
+
+.primary-method h2 {
+    color: #667eea;
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.method-badge {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(240, 147, 251, 0.4);
+    z-index: 10;
+}
+
 .calculator-card {
     background: white;
     border-radius: 12px;
@@ -276,6 +310,25 @@ footer p {
         font-size: 2rem;
     }
     
+    .primary-method {
+        transform: scale(1);
+        margin-bottom: 1.5rem;
+    }
+    
+    .primary-method:hover {
+        transform: scale(1.01) translateY(-3px);
+    }
+    
+    .primary-method h2 {
+        font-size: 1.5rem;
+    }
+    
+    .method-badge {
+        right: 10px;
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
     .calculator-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -306,6 +359,22 @@ footer p {
 }
 
 @media (max-width: 480px) {
+    .primary-method {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .primary-method h2 {
+        font-size: 1.25rem;
+    }
+    
+    .method-badge {
+        top: -8px;
+        right: 8px;
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
     .calculator-card {
         padding: 1rem;
     }

@@ -4,6 +4,7 @@ class AudiobookCalculator {
         this.STORAGE_KEY = 'audiobook_history';
         this.currentResultA = null;
         this.currentResultB = null;
+        this.currentResultC = null;
         
         this.init();
     }
@@ -27,6 +28,12 @@ class AudiobookCalculator {
             this.calculateMethodB();
         });
 
+        // Method C form
+        document.getElementById('method-c-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.calculateMethodC();
+        });
+
         // Save buttons
         document.getElementById('save-a').addEventListener('click', () => {
             this.saveEntry('A');
@@ -34,6 +41,10 @@ class AudiobookCalculator {
 
         document.getElementById('save-b').addEventListener('click', () => {
             this.saveEntry('B');
+        });
+
+        document.getElementById('save-c').addEventListener('click', () => {
+            this.saveEntry('C');
         });
 
         // Clear history button
@@ -46,14 +57,38 @@ class AudiobookCalculator {
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('date-a').value = today;
         document.getElementById('date-b').value = today;
+        document.getElementById('date-c').value = today;
     }
 
     calculateMethodA() {
-        const hours = parseFloat(document.getElementById('hours').value) || 0;
-        const minutes = parseFloat(document.getElementById('minutes').value) || 0;
-        const speed = parseFloat(document.getElementById('speed-a').value);
+        const totalPages = parseFloat(document.getElementById('total-pages').value) || 0;
+        const percentage = parseFloat(document.getElementById('percentage-a').value) || 0;
         const bookTitle = document.getElementById('book-title-a').value.trim();
         const date = document.getElementById('date-a').value;
+
+        // Calculate pages: totalPages * (percentage / 100)
+        const pages = Math.round(totalPages * (percentage / 100));
+
+        // Store result for saving
+        this.currentResultA = {
+            method: 'A',
+            bookTitle: bookTitle || 'Untitled Book',
+            totalPages: totalPages,
+            percentage: percentage,
+            pages: pages,
+            date: date
+        };
+
+        // Display result
+        this.displayResult('A', pages);
+    }
+
+    calculateMethodB() {
+        const hours = parseFloat(document.getElementById('hours').value) || 0;
+        const minutes = parseFloat(document.getElementById('minutes').value) || 0;
+        const speed = parseFloat(document.getElementById('speed-b').value);
+        const bookTitle = document.getElementById('book-title-b').value.trim();
+        const date = document.getElementById('date-b').value;
 
         // Convert to total hours
         const totalHours = hours + (minutes / 60);
@@ -62,8 +97,8 @@ class AudiobookCalculator {
         const pages = Math.round(totalHours * speed * this.PAGES_PER_HOUR);
 
         // Store result for saving
-        this.currentResultA = {
-            method: 'A',
+        this.currentResultB = {
+            method: 'B',
             bookTitle: bookTitle || 'Untitled Book',
             listeningTime: totalHours,
             speed: speed,
@@ -73,16 +108,16 @@ class AudiobookCalculator {
         };
 
         // Display result
-        this.displayResult('A', pages);
+        this.displayResult('B', pages);
     }
 
-    calculateMethodB() {
+    calculateMethodC() {
         const totalHours = parseFloat(document.getElementById('total-hours').value) || 0;
         const totalMinutes = parseFloat(document.getElementById('total-minutes').value) || 0;
-        const percentage = parseFloat(document.getElementById('percentage').value) || 0;
-        const speed = parseFloat(document.getElementById('speed-b').value);
-        const bookTitle = document.getElementById('book-title-b').value.trim();
-        const date = document.getElementById('date-b').value;
+        const percentage = parseFloat(document.getElementById('percentage-c').value) || 0;
+        const speed = parseFloat(document.getElementById('speed-c').value);
+        const bookTitle = document.getElementById('book-title-c').value.trim();
+        const date = document.getElementById('date-c').value;
 
         // Convert to total hours
         const totalBookHours = totalHours + (totalMinutes / 60);
@@ -94,8 +129,8 @@ class AudiobookCalculator {
         const pages = Math.round(listenedHours * speed * this.PAGES_PER_HOUR);
 
         // Store result for saving
-        this.currentResultB = {
-            method: 'B',
+        this.currentResultC = {
+            method: 'C',
             bookTitle: bookTitle || 'Untitled Book',
             totalLength: totalBookHours,
             percentage: percentage,
@@ -108,7 +143,7 @@ class AudiobookCalculator {
         };
 
         // Display result
-        this.displayResult('B', pages);
+        this.displayResult('C', pages);
     }
 
     displayResult(method, pages) {
@@ -123,7 +158,14 @@ class AudiobookCalculator {
     }
 
     saveEntry(method) {
-        const result = method === 'A' ? this.currentResultA : this.currentResultB;
+        let result;
+        if (method === 'A') {
+            result = this.currentResultA;
+        } else if (method === 'B') {
+            result = this.currentResultB;
+        } else if (method === 'C') {
+            result = this.currentResultC;
+        }
         
         if (!result) {
             alert('Please calculate pages first before saving.');
@@ -187,9 +229,14 @@ class AudiobookCalculator {
     }
 
     createHistoryItemHTML(entry) {
-        const details = entry.method === 'A' 
-            ? `Time: ${entry.displayTime} | Speed: ${entry.speed}x`
-            : `Progress: ${entry.percentage}% of ${entry.displayTotalTime} | Speed: ${entry.speed}x`;
+        let details;
+        if (entry.method === 'A') {
+            details = `${entry.percentage}% of ${entry.totalPages} pages`;
+        } else if (entry.method === 'B') {
+            details = `Time: ${entry.displayTime} | Speed: ${entry.speed}x`;
+        } else if (entry.method === 'C') {
+            details = `Progress: ${entry.percentage}% of ${entry.displayTotalTime} | Speed: ${entry.speed}x`;
+        }
 
         return `
             <div class="history-item">

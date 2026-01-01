@@ -4,9 +4,10 @@ A simple web application that converts audiobook listening time into equivalent 
 
 ## ✨ Features
 
-- **Two Calculation Methods**:
-  - **Method A**: Enter listening time + speed → get equivalent pages
-  - **Method B**: Enter total audiobook length + percentage completed + speed → get equivalent pages
+- **Three Calculation Methods**:
+  - **Method A** (Recommended): Enter total book pages + percentage completed → get equivalent pages
+  - **Method B**: Enter listening time + speed → get equivalent pages
+  - **Method C**: Enter total audiobook length + percentage completed + speed → get equivalent pages
 - **Local Storage**: Save your reading history locally in your browser
 - **History Management**: View, delete individual entries, or clear all history
 - **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
@@ -16,30 +17,48 @@ A simple web application that converts audiobook listening time into equivalent 
 
 ## 🧮 How It Works
 
-**Conversion Rate**: 1 hour of listening time = 50 pages at 1x speed
+The calculator offers three different methods to convert your audiobook listening into equivalent page counts:
 
-### Method A - Time & Speed
+### Method A - Book Pages & Progress (Recommended)
+```
+Pages = Total Book Pages × (Percentage Completed / 100)
+```
+
+Example: 300-page book, 50% completed = 150 pages
+
+*This method uses the actual page count from your physical book edition and calculates based on your listening progress.*
+
+### Method B - Time & Speed
 ```
 Pages = (Hours + Minutes/60) × Speed × 50
 ```
 
 Example: 2 hours at 1x speed = 100 pages
 
-### Method B - Total Length & Progress
+*This method uses a standard conversion rate of 1 hour = 50 pages at 1x speed.*
+
+### Method C - Total Length & Progress
 ```
 Pages = (Total Length × Percentage/100) × Speed × 50
 ```
 
 Example: 4 hour book, 50% completed at 1x speed = 100 pages
 
+*This method calculates based on the total audiobook length and your progress percentage.*
+
 ## 🚀 How to Use
 
-1. **Choose your calculation method** (A or B)
+1. **Choose your calculation method**:
+   - **Method A** (Recommended): Use when you know the physical book's page count
+   - **Method B**: Use when you know your exact listening time
+   - **Method C**: Use when you know the total audiobook length
+
 2. **Enter your audiobook details**:
    - Book title (optional)
-   - Time information
-   - Listening speed
+   - Required information based on chosen method
+   - Listening speed (for Methods B & C)
    - Date
+
 3. **Click "Calculate Pages"** to see your equivalent page count
 4. **Save your entry** to track your reading history
 5. **View your history** at the bottom of the page
