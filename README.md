@@ -2,6 +2,8 @@
 
 A simple web application that converts audiobook listening time into equivalent page counts. Perfect for readers who want to track their reading progress across both physical books and audiobooks.
 
+Try it out [HERE](https://hilbug.github.io/audiobook-page-calculator/)!
+
 ## ✨ Features
 
 - **Three Calculation Methods**:
@@ -97,7 +99,7 @@ The calculator is fully responsive and works great on mobile devices. The layout
    - Click "Save"
 
 3. **Access your site**:
-   - URL: `https://username.github.io/audiobook-page-calculator/`
+   - URL: `[https://username.github.io/audiobook-page-calculator/](https://hilbug.github.io/audiobook-page-calculator/)`
 
 ### Alternative Hosting
 
