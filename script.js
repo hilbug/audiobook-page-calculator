@@ -1,6 +1,6 @@
 class AudiobookCalculator {
     constructor() {
-        this.PAGES_PER_HOUR = 50;
+        this.PAGES_PER_HOUR = 30;
         this.STORAGE_KEY = 'audiobook_history';
         this.currentResultA = null;
         this.currentResultB = null;

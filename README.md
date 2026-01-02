@@ -30,19 +30,19 @@ Example: 300-page book, 50% completed = 150 pages
 
 ### Method B - Time & Speed
 ```
-Pages = (Hours + Minutes/60) × Speed × 50
+Pages = (Hours + Minutes/60) × Speed × 30
 ```
 
-Example: 2 hours at 1x speed = 100 pages
+Example: 2 hours at 1x speed = 60 pages
 
-*This method uses a standard conversion rate of 1 hour = 50 pages at 1x speed.*
+*This method uses a standard conversion rate of 1 hour = 30 pages at 1x speed.*
 
 ### Method C - Total Length & Progress
 ```
-Pages = (Total Length × Percentage/100) × Speed × 50
+Pages = (Total Length × Percentage/100) × Speed × 30
 ```
 
-Example: 4 hour book, 50% completed at 1x speed = 100 pages
+Example: 4 hour book, 50% completed at 1x speed = 60 pages
 
 *This method calculates based on the total audiobook length and your progress percentage.*
 
@@ -114,7 +114,6 @@ The calculator works with any static hosting service:
 - **Browser Support**: Modern browsers (Chrome, Firefox, Safari, Edge)
 - **Responsive**: Mobile-first responsive design
 - **Performance**: Lightweight and fast-loading
-- **Development Tool**: Created using [Windsurf IDE](https://windsurf.com/) for efficient development workflow
 
 ## 🎯 Use Cases
 
